@@ -5,11 +5,18 @@ import styles from "../styles/Home.module.css";
 import Bloom from "@/components/bloom";
 import Link from "next/link";
 import ProductsSection from "@/components/ProductSection";
+import Image from "next/image";
+
+interface User {
+  name: { first: string; last: string };
+  location: { city: string; country: string };
+  picture: { large: string };
+}
 
 const Home: React.FC = () => {
   const [isHovered, setIsHovered] = useState(false);
   const [isVisible, setIsVisible] = useState(false); // State to track visibility and animation
-  const [userData, setUserData] = useState<any[]>([]); // State to hold user data from the API
+  const [userData, setUserData] = useState<User[]>([]); // State to hold user data from the API
   const storyRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -72,7 +79,6 @@ const Home: React.FC = () => {
               FLÉUR
             </span>
             , we believe that every creation begins with a spark of inspiration.
-            , we believe that every creation begins with a spark of inspiration.
             Whether you’re looking to launch a unique business or transform a
             beloved hobby into something extraordinary, our journey is rooted in
             passion and creativity. We specialize in handmade crochet products,
@@ -97,6 +103,7 @@ const Home: React.FC = () => {
         <div className="flex-1 w-full">
           <Bloom isHovered={isHovered} setIsHovered={setIsHovered} />
         </div>
+
         {/* Card Section */}
         <div
           className={`${styles.container} w-full flex flex-col items-end justify-start -my-40`}
@@ -111,19 +118,19 @@ const Home: React.FC = () => {
                 className={`${styles.card} transition-transform transform hover:scale-105 hover:shadow-lg hover:bg-[#f3f3f3]`}
               >
                 <div className={styles["img-box"]}>
-                  <img
-                    src={user.picture.large} // Use the user's image
-                    alt={user.name.first} // Use the user's first name as alt text
+                  <Image
+                    src={user.picture.large}
+                    alt={user.name.first}
+                    width={120} // Adjust width as needed
+                    height={120} // Adjust height as needed
                   />
                 </div>
                 <div className={styles.content}>
                   <h2>
                     {user.name.first} {user.name.last}
-                  </h2>{" "}
-                  {/* Display user's name */}
+                  </h2>
                   <p>
-                    {user.location.city}, {user.location.country}{" "}
-                    {/* Display user's location */}
+                    {user.location.city}, {user.location.country}
                   </p>
                   <Link className="text-black" href="#">
                     Read More

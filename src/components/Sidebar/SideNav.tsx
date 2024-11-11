@@ -142,7 +142,7 @@ export default function SideNav() {
 
 export const SideNavItem: React.FC<{
   label: string;
-  icon: any;
+  icon: React.ReactNode; // Change from 'any' to 'React.ReactNode'
   path: string;
   active: boolean;
   isSidebarExpanded: boolean;

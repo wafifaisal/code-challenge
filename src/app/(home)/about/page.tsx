@@ -1,6 +1,13 @@
 "use client";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import Image from "next/image";
+
+// Define type for team members
+interface TeamMember {
+  name: { first: string; last: string };
+  picture: { large: string };
+}
 
 // Fungsi untuk format angka menjadi K dan M
 const formatNumber = (num: number): string => {
@@ -16,7 +23,7 @@ export default function AboutPage() {
   const [clientsCount, setClientsCount] = useState(0);
   const [yarnsCount, setYarnsCount] = useState(0);
   const [patternsCount, setPatternsCount] = useState(0);
-  const [teamMembers, setTeamMembers] = useState([]);
+  const [teamMembers, setTeamMembers] = useState<TeamMember[]>([]);
 
   // Fungsi animasi Count Up
   const countUp = (
@@ -127,14 +134,14 @@ export default function AboutPage() {
       >
         <h2 className="text-4xl font-semibold text-pink-700">Meet Our Team</h2>
         <div className="flex justify-center mt-8 space-x-8">
-          {teamMembers.map((member: any, index: number) => (
+          {teamMembers.map((member, index) => (
             <motion.div
               key={index}
               className="text-center"
               initial={{ scale: 0.9 }}
               whileHover={{ scale: 1.05 }}
             >
-              <img
+              <Image
                 src={member.picture.large}
                 alt={`${member.name.first} ${member.name.last}`}
                 width={120}
