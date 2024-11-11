@@ -89,18 +89,17 @@
     color: #333;
 }
 
-.container .card .content a {
+.container .card .content Link {
     position: relative;
-    top: 15px;
     display: inline-block;
     padding: 12px 25px;
     text-decoration: none;
     background: var(--clr);
-    color: #FFF;
+    color: black;
     font-weight: 500;
 }
 
-.container .card .content a:hover {
+.container .card .content Link:hover {
     opacity: 0.8;
 }
 
@@ -119,7 +118,12 @@
         font-size: 0.8rem;
     }
 
-    .container .card .content a {
+    .container .card .content Link {
         font-size: 0.9rem;
     }
 }
+
+
+
+
+

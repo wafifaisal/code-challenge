@@ -10,8 +10,8 @@ import {
 } from "@/components/Sidebar/ui/tooltip";
 import { NavItems } from "@/app/styles/config";
 import { cn } from "@/lib/utils";
-import { ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 export default function SideNav() {
   const navItems = NavItems();
@@ -24,7 +24,7 @@ export default function SideNav() {
       }
       return JSON.parse(saved);
     }
-    return true; // default state if window is not defined
+    return true;
   });
 
   useEffect(() => {
@@ -119,13 +119,19 @@ export default function SideNav() {
         <div className="mt-[calc(calc(90vh)-40px)] relative">
           <button
             type="button"
-            className="absolute bottom-32 right-[-12px] flex h-6 w-6 items-center justify-center border border-muted-foreground/20 rounded-full bg-accent shadow-md hover:shadow-lg transition-shadow duration-300 ease-in-out"
+            className="absolute bottom-32 right-[-12px] flex h-6 w-6 items-center justify-center border rounded-full shadow-md hover:shadow-lg transition-shadow duration-300 ease-in-out z-20  bg-[#AB886D] "
             onClick={toggleSidebar}
           >
             {isSidebarExpanded ? (
-              <ChevronLeft size={16} className="stroke-foreground" />
+              <ChevronLeft
+                size={20}
+                className="stroke-foreground text-black "
+              />
             ) : (
-              <ChevronRight size={16} className="stroke-foreground" />
+              <ChevronRight
+                size={20}
+                className="stroke-foreground text-black "
+              />
             )}
           </button>
         </div>

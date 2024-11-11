@@ -3,13 +3,19 @@ import { Slot } from "@radix-ui/react-slot";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
-// Arrow icon component
-const ArrowRight = () => (
+// Arrow icon component with customizable size and color
+const ArrowRight = ({
+  size = 4,
+  color = "currentColor",
+}: {
+  size?: number;
+  color?: string;
+}) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    className="h-4 w-4 ml-2" // Add margin-left to space from the text
+    className={`h-${size} w-${size} ml-2`} // dynamic size and margin
     viewBox="0 0 20 20"
-    fill="currentColor"
+    fill={color}
   >
     <path
       fillRule="evenodd"
@@ -53,14 +59,26 @@ export interface ButtonProps
     VariantProps<typeof buttonVariants> {
   asChild?: boolean;
   rightArrow?: boolean; // New prop to control arrow visibility
+  arrowSize?: number; // Optional prop for custom arrow size
+  arrowColor?: string; // Optional prop for custom arrow color
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   (
-    { className, variant, size, asChild = false, rightArrow = false, ...props },
+    {
+      className,
+      variant,
+      size,
+      asChild = false,
+      rightArrow = false,
+      arrowSize = 4,
+      arrowColor = "currentColor",
+      ...props
+    },
     ref
   ) => {
     const Comp = asChild ? Slot : "button";
+
     return (
       <Comp
         className={cn(buttonVariants({ variant, size, className }))}
@@ -68,11 +86,12 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         {...props}
       >
         {props.children} {/* Render button text/children */}
-        {rightArrow && <ArrowRight />} {/* Conditionally render the arrow */}
+        {rightArrow && <ArrowRight size={arrowSize} color={arrowColor} />}{" "}
       </Comp>
     );
   }
 );
+
 Button.displayName = "Button";
 
 export { Button, buttonVariants };

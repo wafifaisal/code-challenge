@@ -5,18 +5,31 @@ import "swiper/swiper-bundle.css";
 import { Autoplay, Pagination } from "swiper/modules";
 import Image from "next/image";
 import { useMemo } from "react";
+import Link from "next/link";
 
-// Move slide data outside the component to prevent unnecessary re-renders
+// Updated slide data with specific links for each item
 const slides = [
   [
-    { src: "/bunga.png", label: "Flower Bundle" },
-    { src: "/costumize.png", label: "Make Your Own Bundle" },
-    { src: "/satuan.png", label: "Flowers" },
+    {
+      src: "/bunga.png",
+      label: "Flower Bundle",
+      link: "/products/bundle",
+    },
+    {
+      src: "/costumize.png",
+      label: "Make Your Own Bundle",
+      link: "/products/customize",
+    },
+    { src: "/satuan.png", label: "Flowers", link: "/products/flowers" },
   ],
   [
-    { src: "/charm.png", label: "Charms" },
-    { src: "/animal.png", label: "Stuffed Animal" },
-    { src: "/bag.png", label: "Bags" },
+    { src: "/charm.png", label: "Charms", link: "/products/charms" },
+    {
+      src: "/animal.png",
+      label: "Stuffed Animal",
+      link: "/products/stuffedanimal",
+    },
+    { src: "/bag.png", label: "Bags", link: "/products/bags" },
   ],
 ];
 
@@ -26,40 +39,42 @@ export default function Carousel() {
     () => ({
       modules: [Pagination, Autoplay],
       pagination: { clickable: true },
-      autoplay: { delay: 5000 }, // reduced autoplay delay for smoother transition
+      autoplay: { delay: 5000 },
       loop: true,
       slidesPerView: 1,
-      speed: 500, // reduced speed for less demanding transitions
+      speed: 500,
       className: "mySwiper",
     }),
     []
   );
 
   return (
-    <div className="min-h-screen flex flex-col justify-center items-center bg-gradient-to-b from-gray-100 to-gray-200">
-      <h1 className="text-center text-4xl md:text-3xl lg:text-5xl font-bold my-8 text-gray-800 tracking-wide font-serif animate-fade-in">
+    <div className="min-h-screen flex flex-col justify-center items-center bg-gradient-to-b from-gray-900 to-gray-800">
+      <h1 className="text-center text-5xl font-bold my-8 text-white tracking-widest font-serif animate-fade-in">
         Crafted by Hand, Inspired by You
       </h1>
-      <div className="w-11/12 md:w-3/4 lg:w-2/3 xl:w-1/2 bg-gray-100 rounded-lg overflow-hidden animate-slide-up">
+      <div className="w-full lg:w-3/4 xl:w-2/3 bg-gray-900 rounded-lg overflow-hidden animate-slide-up">
         <Swiper {...swiperConfig}>
           {slides.map((slide, index) => (
             <SwiperSlide key={index}>
-              <div className="flex flex-col md:flex-row justify-around bg-gray-100 items-center gap-4 md:gap-6">
+              <div className="flex flex-col md:flex-row justify-around items-center gap-4 md:gap-6 bg-gray-900">
                 {slide.map((item, idx) => (
                   <div
                     key={idx}
-                    className="relative group w-[450px] h-[450px] md:w-[300px] transition-transform duration-300 ease-in-out transform hover:scale-105"
+                    className="relative group w-[450px] h-[450px] md:w-[350px] transition-transform duration-300 ease-in-out transform hover:scale-105"
                   >
-                    <Image
-                      src={item.src}
-                      alt={item.label}
-                      width={450}
-                      height={450}
-                      className="object-cover w-full h-full rounded-lg shadow-lg"
-                      loading="lazy" // lazy loading for optimized performance
-                    />
-                    <div className="absolute bottom-10 left-0 right-4 p-4 bg-white backdrop-blur-md text-black opacity-0 group-hover:opacity-70">
-                      <p className="text-lg md:text-xl text-center slide-text font-semibold">
+                    <Link href={item.link}>
+                      <Image
+                        src={item.src}
+                        alt={item.label}
+                        width={450}
+                        height={450}
+                        className="object-cover w-full h-full rounded-lg shadow-xl"
+                        loading="lazy"
+                      />
+                    </Link>
+                    <div className="absolute bottom-4 left-0 right-0 p-4 bg-white backdrop-blur-md text-black opacity-0 group-hover:opacity-80 transition-opacity duration-300 ease-in">
+                      <p className="text-lg md:text-xl text-center font-semibold">
                         {item.label}
                       </p>
                     </div>

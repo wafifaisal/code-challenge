@@ -25,7 +25,6 @@ body {
 /* styles.css or your CSS module */
 .blooming-flower {
   position: absolute;
-  bottom: 100%; /* Position above the text */
   left: 50%;
   transform: translateX(-50%);
   opacity: 0; /* Initially hidden */
@@ -69,6 +68,55 @@ body {
   position: relative;
   overflow: hidden;
 }
+
+
+
+/* Product Card */
+.product-card {
+  max-width: 280px;
+  margin: auto;
+  cursor: pointer;
+}
+
+.product-image {
+  border-radius: 0.5rem;
+  transition: transform 0.3s ease;
+}
+
+.product-title {
+  font-size: 1.125rem; /* 18px */
+  font-weight: 500;
+  color: #333;
+  transition: color 0.3s ease;
+}
+
+.product-title:hover {
+  color: #7c3aed; /* Purple color for hover */
+}
+
+.ribbon {
+  @apply absolute top-0 left-0 w-full bg-green-600 bg-opacity-80 flex justify-center items-center z-50;
+  height: 40px;
+}
+
+.ribbon span {
+  @apply text-white font-bold text-sm md:text-base lg:text-lg;
+  animation: scrollText 5s linear infinite;
+}
+
+/* Smooth scrolling animation */
+@keyframes scrollText {
+  0% {
+    transform: translateX(200%);
+  }
+  50% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-250%);
+  }
+}
+
 
 
 

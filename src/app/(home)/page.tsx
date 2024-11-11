@@ -1,16 +1,59 @@
 "use client";
-
 import Carousel from "@/components/Carousel";
-import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import styles from "../styles/Home.module.css";
+import Bloom from "@/components/bloom";
+import Link from "next/link";
+import ProductsSection from "@/components/ProductSection";
 
 const Home: React.FC = () => {
   const [isHovered, setIsHovered] = useState(false);
+  const [isVisible, setIsVisible] = useState(false); // State to track visibility and animation
+  const [userData, setUserData] = useState<any[]>([]); // State to hold user data from the API
+  const storyRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    // Fetch data from the RandomUser API
+    const fetchUserData = async () => {
+      try {
+        const response = await fetch("https://randomuser.me/api/?results=3"); // Fetch 3 random users
+        const data = await response.json();
+        setUserData(data.results); // Set the data to state
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchUserData();
+  }, []); // Empty dependency array ensures this effect runs only once on mount
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (storyRef.current) {
+        const rect = storyRef.current.getBoundingClientRect();
+        const middleOfViewport = window.innerHeight / 1.5;
+
+        // Check if the section is in the middle of the viewport
+        if (rect.top <= middleOfViewport && rect.bottom >= middleOfViewport) {
+          setIsVisible(true); // Show the section with animation
+        } else {
+          setIsVisible(false); // Hide the section when it's not in the middle of the viewport
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    handleScroll(); // Check if it's already in view when the component mounts
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []); // Empty dependency array ensures this effect runs only once on mount
 
   return (
-    <div>
+    <div className="">
       <Carousel />
+      <ProductsSection />
       <div
         className={`${styles.container} flex flex-col lg:flex-row p-4 bg-gray-200`}
       >
@@ -18,15 +61,17 @@ const Home: React.FC = () => {
           <h1 className="text-4xl md:text-3xl lg:text-5xl font-bold mb-8 ml-8">
             Our story
           </h1>
-          <div className="flex-col ml-8">
+          <div
+            ref={storyRef}
+            className={`flex-col ml-8 ${
+              isVisible ? "animate-fadeIn" : "opacity-0"
+            } transition-opacity duration-1000 ease-out`}
+          >
             At{" "}
-            <span
-              className="text-[rgb(153,107,83)]"
-              onMouseEnter={() => setIsHovered(true)}
-              onMouseLeave={() => setIsHovered(false)}
-            >
+            <span className="text-[rgb(153,107,83)] hover:text-[rgb(125, 85, 61)] transition-all duration-300 ease-in-out transform hover:scale-110">
               FLÉUR
             </span>
+            , we believe that every creation begins with a spark of inspiration.
             , we believe that every creation begins with a spark of inspiration.
             Whether you’re looking to launch a unique business or transform a
             beloved hobby into something extraordinary, our journey is rooted in
@@ -49,71 +94,43 @@ const Home: React.FC = () => {
           </div>
         </div>
 
-        {/* Adjust the flower image with responsive sizes */}
-        <div className="flex-1 w-full flex items-end justify-start">
-          <Image
-            src="/flower.png"
-            alt="Flowers"
-            width={500} // base width
-            height={500} // base height
-            className={`mt-[100px] -mb-20 w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 lg:w-56 lg:h-56 flower ${
-              isHovered ? "hover" : ""
-            }`} // responsive sizes
-          />
+        <div className="flex-1 w-full">
+          <Bloom isHovered={isHovered} setIsHovered={setIsHovered} />
         </div>
         {/* Card Section */}
         <div
-          className={`${styles.container} w-full flex items-end justify-start`}
+          className={`${styles.container} w-full flex flex-col items-end justify-start -my-40`}
         >
-          <div className={`${styles.card}`} style={{}}>
-            <div className={styles["img-box"]}>
-              <img src="https://i.postimg.cc/t4w95jsf/img-01.png" alt="Leafs" />
-            </div>
-            <div className={styles.content}>
-              <h2>Leafs</h2>
-              <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                Architecto, hic? Magnam eum error saepe doloribus corrupti
-                repellat quisquam alias doloremque!
-              </p>
-              <a href="">Read More</a>
-            </div>
-          </div>
-
-          <div className={`${styles.card}`} style={{}}>
-            <div className={styles["img-box"]}>
-              <img
-                src="https://i.postimg.cc/pdjRc68d/img-02.png"
-                alt="Fruits"
-              />
-            </div>
-            <div className={styles.content}>
-              <h2>Fruits</h2>
-              <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                Architecto, hic? Magnam eum error saepe doloribus corrupti
-                repellat quisquam alias doloremque!
-              </p>
-              <a href="">Read More</a>
-            </div>
-          </div>
-
-          <div className={`${styles.card}`} style={{}}>
-            <div className={styles["img-box"]}>
-              <img
-                src="https://i.postimg.cc/wvDr345G/img-37.png"
-                alt="Flowers"
-              />
-            </div>
-            <div className={styles.content}>
-              <h2>Flowers</h2>
-              <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                Architecto, hic? Magnam eum error saepe doloribus corrupti
-                repellat quisquam alias doloremque!
-              </p>
-              <a href="">Read More</a>
-            </div>
+          <h1 className="text-4xl md:text-4xl lg:text-5xl font-bold mb-8 ml-8 flex flex-col">
+            Meet our Team
+          </h1>
+          <div className="flex flex-wrap gap-10 justify-center xl:flex-row lg:flex-row md:flex-col">
+            {userData.map((user, index) => (
+              <div
+                key={index}
+                className={`${styles.card} transition-transform transform hover:scale-105 hover:shadow-lg hover:bg-[#f3f3f3]`}
+              >
+                <div className={styles["img-box"]}>
+                  <img
+                    src={user.picture.large} // Use the user's image
+                    alt={user.name.first} // Use the user's first name as alt text
+                  />
+                </div>
+                <div className={styles.content}>
+                  <h2>
+                    {user.name.first} {user.name.last}
+                  </h2>{" "}
+                  {/* Display user's name */}
+                  <p>
+                    {user.location.city}, {user.location.country}{" "}
+                    {/* Display user's location */}
+                  </p>
+                  <Link className="text-black" href="#">
+                    Read More
+                  </Link>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>

@@ -1,0 +1,132 @@
+ /* CatLayout.module.css */
+
+ .cat {
+    width: 200px;
+    height: 200px;
+    margin: 100px auto;
+    position: relative;
+}
+
+.catMain {
+    width: 200px;
+    height: 200px;
+    position: relative;
+    transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+}
+
+/* Crochet-style circle with a textured crochet pattern */
+.info {
+    width: 200px;
+    height: 200px;
+    background: #8b4513;
+    border-radius: 100%;
+    z-index: 20;
+    position: absolute;
+    box-shadow: inset 0px 0px 20px 5px #cd853f, 0px 0px 10px rgba(0, 0, 0, 0.2);
+    background-image: radial-gradient(circle, #8b4513 20%, #a0522d 100%);
+    background-size: 15px 15px; /* Increase the size for a more visible texture */
+    background-position: 0 0;
+}
+
+/* Default petal style with solid background */
+.petal {
+    width: 150px;
+    height: 150px;
+    border-radius: 100%;
+    margin-top: 100px;
+    margin-left: 100px;
+    z-index: 5;
+    position: absolute;
+    transform-origin: 0 0;
+    opacity: 0;
+    backface-visibility: hidden;
+    transform: translate3d(0, 0, 0);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+    border: 5px solid rgba(218,165,32); /* Crochet border with thicker edge */
+    background-color: #e6ff8d; /* Solid color for petals */
+    box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Petals setup with fixed rotation for each petal */
+.portfolio {
+    transform: rotate(0deg);
+    background: url('http://leejan.com/menu/portfolio.png') 65% 65% no-repeat;
+}
+
+.contact {
+    transform: rotate(72deg);
+    background: url('http://leejan.com/menu/mail.png') 65% 65% no-repeat;
+}
+
+.socialmedia {
+    transform: rotate(144deg);
+    background: url('http://leejan.com/menu/socialmedia.png') 65% 65% no-repeat;
+}
+
+.inspiration {
+    transform: rotate(216deg);
+    background: url('http://leejan.com/menu/inspiration.png') 65% 65% no-repeat;
+}
+
+.mystery {
+    transform: rotate(288deg);
+    background: url('http://leejan.com/menu/mystery.png') 65% 65% no-repeat;
+}
+
+/* Hover effect on any petal or parent (ensures all petals are visible on hover) */
+.catMain:hover .petal {
+    opacity: 1; /* Ensure opacity is set to 1 */
+    transform: rotate(360deg); /* Rotate clockwise to form a flower */
+}
+
+/* Apply a flower-like transformation when the parent is hovered */
+.catMain:hover .portfolio {
+    transform: rotate(45deg);  /* Create clockwise rotation */
+}
+
+.catMain:hover .contact {
+    transform: rotate(117deg); /* Slight clockwise adjustment */
+}
+
+.catMain:hover .socialmedia {
+    transform: rotate(189deg); /* Clockwise effect */
+}
+
+.catMain:hover .inspiration {
+    transform: rotate(261deg); /* More clockwise rotation */
+}
+
+.catMain:hover .mystery {
+    transform: rotate(333deg); /* Complete the flower rotation */
+}
+
+/* Petals with a shadow when hovered */
+.petal, .portfolio, .contact, .socialmedia, .inspiration, .mystery {
+    box-shadow: inset 0px 0px 30px 10px rgba(255,215,0);
+}
+
+/* Apply shadow effect on hover for individual petals */
+.petal:hover, .portfolio:hover, .contact:hover, .socialmedia:hover, .inspiration:hover, .mystery:hover {
+    box-shadow: inset 0px 0px 30px 20px rgba(218,165,32);
+    z-index: 19; 
+}
+
+.tooltip-content {
+    background-color: #f0e68c; /* Light yellow background, crochet-like feel */
+    color: #6b4f29; /* Dark brown color for the text, complementing the crochet theme */
+    border-radius: 12px; /* Slightly more rounded corners for a softer appearance */
+    padding: 12px 16px; /* Padding for better readability and comfort */
+    font-size: 18px; /* Medium size text for elegance */
+    font-weight: 500; /* Slightly less bold for a softer feel */
+    font-family: 'Georgia', serif; /* Elegant serif font for a more refined look */
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15); /* Subtle but elegant shadow */
+    transition: opacity 0.3s ease, transform 0.2s ease; /* Smooth transition for fading and scaling */
+    border: 2px solid #6b4f29; /* Adding a thin border for more definition */
+    background-image: url('https://www.transparenttextures.com/patterns/zigzag.png'); /* Subtle crochet texture */
+    background-size: 15px 15px; /* Adjust the size of the crochet pattern */
+    text-align: center; /* Centering the text */
+}
+
+
+  
+  
