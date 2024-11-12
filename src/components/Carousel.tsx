@@ -60,7 +60,7 @@ export default function Carousel() {
                 {slide.map((item, idx) => (
                   <div
                     key={idx}
-                    className="relative group w-[450px] h-[450px] md:w-[350px] transition-transform duration-300 ease-in-out transform hover:scale-105"
+                    className="relative group w-[90%] sm:w-[350px] md:w-[450px] h-[300px] sm:h-[350px] md:h-[450px] transition-transform duration-300 ease-in-out transform hover:scale-105"
                   >
                     <Link href={item.link}>
                       <Image
@@ -115,13 +115,26 @@ export default function Carousel() {
         .mySwiper {
           height: 100%;
         }
-        .slide-text {
-          position: relative;
-          transform: translateX(-10%);
-          transition: transform 0.4s ease;
+
+        /* Media Queries for responsiveness */
+        @media (max-width: 768px) {
+          .w-[90%] {
+            width: 100%;
+          }
+          .h-[300px] {
+            height: 250px;
+          }
         }
-        .group:hover .slide-text {
-          transform: translateX(0);
+        @media (max-width: 480px) {
+          .text-lg {
+            font-size: 14px;
+          }
+          .text-xl {
+            font-size: 16px;
+          }
+          .group:hover .slide-text {
+            transform: translateX(0);
+          }
         }
       `}</style>
     </div>

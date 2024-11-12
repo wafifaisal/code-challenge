@@ -116,21 +116,19 @@ export default function SideNav() {
             })}
           </div>
         </aside>
+        {/* Sidebar toggle button */}
         <div className="mt-[calc(calc(90vh)-40px)] relative">
           <button
             type="button"
-            className="absolute bottom-32 right-[-12px] flex h-6 w-6 items-center justify-center border rounded-full shadow-md hover:shadow-lg transition-shadow duration-300 ease-in-out z-20  bg-[#AB886D] "
+            className="absolute bottom-32 right-[-12px] flex h-8 w-8 items-center justify-center border rounded-full shadow-md hover:shadow-lg transition-shadow duration-300 ease-in-out z-20 bg-[#AB886D] sm:block hidden"
             onClick={toggleSidebar}
           >
             {isSidebarExpanded ? (
-              <ChevronLeft
-                size={20}
-                className="stroke-foreground text-black "
-              />
+              <ChevronLeft size={20} className="stroke-foreground text-black" />
             ) : (
               <ChevronRight
                 size={20}
-                className="stroke-foreground text-black "
+                className="stroke-foreground text-black"
               />
             )}
           </button>
@@ -142,7 +140,7 @@ export default function SideNav() {
 
 export const SideNavItem: React.FC<{
   label: string;
-  icon: React.ReactNode; // Change from 'any' to 'React.ReactNode'
+  icon: React.ReactNode;
   path: string;
   active: boolean;
   isSidebarExpanded: boolean;

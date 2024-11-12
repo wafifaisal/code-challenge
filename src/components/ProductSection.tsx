@@ -31,9 +31,9 @@ export default function DiscountedProductsSection() {
   };
 
   return (
-    <div className="">
+    <div>
       <section className="py-16 bg-gradient-to-b from-gray-200 to-gray-200">
-        <div className="max-w-7xl  px-4">
+        <div className="max-w-7xl px-4">
           <h2 className="text-4xl font-bold text-center mb-12 text-gray-800 tracking-wide font-serif animate-fade-in">
             ✨ Cozy Up with a Discount ✨
           </h2>
@@ -49,12 +49,15 @@ export default function DiscountedProductsSection() {
             breakpoints={{
               640: {
                 slidesPerView: 1,
+                spaceBetween: 10,
               },
               768: {
                 slidesPerView: 2,
+                spaceBetween: 15,
               },
               1024: {
                 slidesPerView: 3,
+                spaceBetween: 20,
               },
             }}
             className="swiper-container"
@@ -65,7 +68,7 @@ export default function DiscountedProductsSection() {
                 <SwiperSlide key={index}>
                   <div className="bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out overflow-hidden relative z-10 flex flex-col items-center">
                     {discountPercentage && (
-                      <div className="ribbon absolute top-0 right-0 bg-red-500 text-white p-2 rounded-bl-lg">
+                      <div className="ribbon absolute top-0 right-0 bg-red-500 text-white p-2 rounded-bl-lg text-xs sm:text-sm">
                         <span>-{discountPercentage}% OFF</span>
                       </div>
                     )}
@@ -74,7 +77,7 @@ export default function DiscountedProductsSection() {
                       className="block group text-center"
                       target="_blank"
                     >
-                      <div className="relative w-[300px] h-[300px] flex justify-center items-center">
+                      <div className="relative w-[250px] h-[250px] sm:w-[300px] sm:h-[300px] flex justify-center items-center">
                         <Image
                           src={product.image}
                           alt={product.alt}

@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import { dataProducts, Product } from "@/components/product";
 import Image from "next/image";
 import Link from "next/link";
+import { ChevronLeft } from "lucide-react";
 
 type Params = { category: string; alt: string };
 
@@ -40,15 +41,25 @@ export default function ProductPage({ params }: { params: Params }) {
 
   return (
     <div className="min-h-screen bg-gray-50 py-10">
-      <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 px-4">
+      <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 px-4 relative">
+        {/* Back Button */}
+        <div className="absolute top-0 left-0 mt-6 ml-4 z-10">
+          <Link
+            href={`/products/${category}`}
+            className="flex items-center space-x-2 text-gray-500 hover:text-black text-lg font-semibold transition duration-300 -my-10"
+          >
+            <ChevronLeft size={50} /> {/* Icon for back button */}
+          </Link>
+        </div>
+
         {/* Product Image Section */}
-        <div className="flex justify-center">
+        <div className="relative flex justify-center">
           <Image
             src={product.image}
             alt={product.title}
             width={700}
             height={700}
-            className="w-full max-w-lg h-auto object-cover rounded-lg shadow-md"
+            className="w-full max-w-lg h-auto object-cover rounded-lg shadow-md transition-transform duration-500 ease-in-out transform hover:scale-105"
           />
         </div>
 
@@ -98,7 +109,7 @@ export default function ProductPage({ params }: { params: Params }) {
                 {flowerItems.map((flower) => (
                   <div
                     key={flower!.alt}
-                    className="border border-gray-200 p-4 rounded-lg shadow-sm"
+                    className="border border-gray-200 p-4 rounded-lg shadow-sm transition transform hover:scale-105 hover:shadow-xl"
                   >
                     <Link
                       href={`/products/flowers/${flower!.alt}`}
@@ -109,7 +120,7 @@ export default function ProductPage({ params }: { params: Params }) {
                         width={500}
                         height={500}
                         alt={flower!.title}
-                        className="w-full h-40 object-cover rounded-lg mb-4 hover:opacity-90 transition-opacity duration-200"
+                        className="w-full h-40 object-cover rounded-lg mb-4 transition-opacity duration-200 hover:opacity-90"
                       />
                     </Link>
                     <p className="text-lg font-semibold">{flower!.title}</p>

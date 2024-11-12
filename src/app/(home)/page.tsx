@@ -59,7 +59,7 @@ const Home: React.FC = () => {
   }, []); // Empty dependency array ensures this effect runs only once on mount
 
   return (
-    <div className="">
+    <div>
       <Carousel />
       <ProductsSection />
       <div
@@ -79,16 +79,17 @@ const Home: React.FC = () => {
             <span className="text-[rgb(153,107,83)] hover:text-[rgb(125, 85, 61)] transition-all duration-300 ease-in-out transform hover:scale-110">
               FLÉUR
             </span>
-            , we believe that every creation begins with a spark of inspiration.
-            Whether you’re looking to launch a unique business or transform a
-            beloved hobby into something extraordinary, our journey is rooted in
-            passion and creativity. We specialize in handmade crochet products,
-            each piece crafted with love and dedication. Our story is about more
-            than just crochet; it’s about connecting with people through art and
-            craftsmanship. In a world filled with over 1.5 billion websites, we
-            strive to stand out by sharing our authentic voice. We want you to
-            feel the warmth and uniqueness in every stitch, reflecting the care
-            and attention that goes into our creations.
+            , we believe that every creation begins with a spark of
+            inspiration.Whether you’re looking to launch a unique business or
+            transform a beloved hobby into something extraordinary, our journey
+            is rooted in passion and creativity. We specialize in handmade
+            crochet products, each piece crafted with love and dedication. Our
+            story is about more than just crochet; it’s about connecting with
+            people through art and craftsmanship. In a world filled with over
+            1.5 billion websites, we strive to stand out by sharing our
+            authentic voice. We want you to feel the warmth and uniqueness in
+            every stitch, reflecting the care and attention that goes into our
+            creations.
             <div className="my-4">
               We invite you to join us on this creative adventure. Our handmade
               items are not just products; they’re stories waiting to be shared.
@@ -98,6 +99,7 @@ const Home: React.FC = () => {
               through our creations, and together, let’s make something
               beautiful.
             </div>
+            {/* Rest of the content */}
           </div>
         </div>
 
@@ -134,7 +136,7 @@ const Home: React.FC = () => {
                   <p>
                     {user.location.city}, {user.location.country}
                   </p>
-                  <Link className="text-black" href="#">
+                  <Link className="text-black" href="/teams">
                     Read More
                   </Link>
                 </div>

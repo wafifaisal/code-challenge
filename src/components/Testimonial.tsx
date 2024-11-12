@@ -28,51 +28,44 @@ const data: DataType[] = [
     className: "md:col-span-2",
     bgColor: color_ModerateViolet,
     textColor: color_LightGray,
-    // avatarImg: imageDaniel,
     name: "Daniel Clifford",
-    heading:
-      "I received a job offer mid-course, and the subjects I learned were current, if not more so, in the company I joined. I honestly feel I got every penny’s worth.",
+    heading: "A crochet bag that fits my style perfectly!",
     description:
-      "I was an EMT for many years before I joined the bootcamp. I’ve been looking to make a transition and have heard some people who had an amazing experience here. I signed up for the free intro course and found it incredibly fun! I enrolled shortly thereafter. The next 12 weeks was the best - and most grueling - time of my life. Since completing the course, I’ve successfully switched careers, working as a Software Engineer at a VR startup.",
+      "I purchased a crochet bag from Fleur, and it’s the perfect blend of functionality and fashion. The bag is spacious and beautifully crafted. I get compliments on it all the time. It's clear the craftsmanship is top-notch, and I love how unique it is!",
   },
   {
-    // avatarImg: imageJonathan,
     bgColor: color_VeryDarkGrayishBlue,
     textColor: color_LightGray,
     name: "Jonathan Walters",
-    heading: "The team was very supportive and kept me motivated",
+    heading: "These crochet flowers are a game changer!",
     description:
-      "I started as a total newbie with virtually no coding skills. I now work as a mobile engineer for a big company. This was one of the best investments I’ve made in myself.",
+      "I bought a set of crochet flowers for my home decor, and they completely transformed my living room. The attention to detail in each flower is impressive, and they add a touch of elegance. The colors are so vibrant, they brighten up any space!",
   },
   {
     className: "md:row-span-2",
     bgColor: color_White,
     textColor: color_VeryDarkGrayishBlue,
-    // avatarImg: imageKira,
     name: "Kira Whittle",
-    heading: "Such a life-changing experience. Highly recommended!",
+    heading: "The crochet products from Fleur are so charming!",
     description:
-      "Before joining the bootcamp, I’ve never written a line of code. The agile team project, in particular, was outstanding. It helped me land a job as a full-stack developer after receiving multiple offers. 100% recommend!",
+      "I’ve purchased several crochet items from Fleur, including a crochet bag and decorative flowers. Each piece feels so personal and unique. The quality of the materials used is excellent, and the designs are timeless. I highly recommend Fleur’s products!",
   },
   {
     bgColor: color_White,
     textColor: color_VeryDarkGrayishBlue,
-    // avatarImg: imageJeanette,
     name: "Jeanette Harmon",
-    heading: "An overall wonderful and rewarding experience",
+    heading: "A delightful crochet bag that’s perfect for any occasion!",
     description:
-      "Thank you for the wonderful experience! I now have a job I really enjoy, and make a good living while doing something I love.",
+      "I’m so in love with the crochet bag I bought from Fleur. It's the perfect size for everyday use and goes with every outfit. The attention to detail is amazing, and I can tell it was made with a lot of love. I’ve gotten so many compliments on it!",
   },
   {
     className: "md:col-span-2",
-    // avatarImg: imagePatrick,
     bgColor: color_VeryDarkBlackishBlue,
     textColor: color_LightGray,
     name: "Patrick Abrams",
-    heading:
-      "Awesome teaching support from TAs who did the bootcamp themselves. Getting guidance from them was easy.",
+    heading: "Lovely crochet flowers for gifts!",
     description:
-      "The program gave me the confidence necessary to present myself as a capable junior developer. You will get the personal attention you need from an incredible community.",
+      "I ordered a set of crochet flowers as a gift for my girlfriend, and she absolutely adored them. They are so delicate and beautiful. The perfect gift for someone who appreciates handmade items. Fleur truly captures the essence of charm in each piece.",
   },
 ];
 
@@ -83,19 +76,28 @@ export default function Home() {
       style={{ background: color_LightGrayishBlue }}
       className="flex justify-center items-center min-h-screen p-8 font-BarlowSemiCondensed"
     >
-      <div className="grid gap-6 md:grid-cols-4 md:grid-rows-2 max-w-[960px]">
-        {data.map((item, index) => (
-          <Card
-            key={index}
-            bgColor={item.bgColor}
-            textColor={item.textColor}
-            // avatarImg={item.avatarImg}
-            description={item.description}
-            heading={item.heading}
-            name={item.name}
-            className={item.className}
-          />
-        ))}
+      <div className="max-w-[960px] w-full">
+        {/* Customer Title Section */}
+        <section className="text-center mb-12">
+          <h2 className="text-3xl font-semibold text-pink-700">
+            Customers Who Loved Our Crochet
+          </h2>
+        </section>
+
+        {/* Review Cards */}
+        <div className="grid gap-6 md:grid-cols-4 md:grid-rows-2">
+          {data.map((item, index) => (
+            <Card
+              key={index}
+              bgColor={item.bgColor}
+              textColor={item.textColor}
+              description={item.description}
+              heading={item.heading}
+              name={item.name}
+              className={item.className}
+            />
+          ))}
+        </div>
       </div>
     </main>
   );
@@ -113,7 +115,6 @@ function Card(props: DataType) {
     >
       <section className="flex gap-2">
         <Image
-          // src={props.avatarImg}
           src={"/download.png"}
           alt={`${props.name}-avatar`}
           width={200}
@@ -122,7 +123,7 @@ function Card(props: DataType) {
         />
         <div>
           <div className="text-xs font-semibold">{props.name}</div>
-          <p className="text-[10px] opacity-50">Verified Graduate</p>
+          <p className="text-[10px] opacity-50">Verified Customer</p>
         </div>
       </section>
       <h3 className="font-semibold text-lg">{props.heading}</h3>
