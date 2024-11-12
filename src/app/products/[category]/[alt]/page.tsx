@@ -35,6 +35,9 @@ export default function ProductPage({ params }: { params: Params }) {
         .filter(Boolean)
     : [];
 
+  // WhatsApp link with a message containing the product details
+  const whatsappMessage = `I am interested in purchasing the product "${product.title}" for ${product.price}. Could you provide more information?`;
+
   return (
     <div className="min-h-screen bg-gray-50 py-10">
       <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 px-4">
@@ -75,10 +78,17 @@ export default function ProductPage({ params }: { params: Params }) {
             <p>{product.description}</p>
           </div>
 
-          {/* Add to Cart Button */}
-          <button className="w-full py-3 mb-6 text-white bg-green-600 hover:bg-green-700 rounded-lg shadow-md transition duration-200">
-            Add to Cart
-          </button>
+          {/* Add to Cart Button (Link to WhatsApp) */}
+          <a
+            href={`https://wa.me/+6287821698570?text=${encodeURIComponent(
+              whatsappMessage
+            )}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-full py-3 mb-6 text-white bg-green-600 hover:bg-green-700 rounded-lg shadow-md transition duration-200 text-center inline-block"
+          >
+            Add to Cart (WhatsApp)
+          </a>
 
           {/* Bundle Items Section */}
           {flowerItems.length > 0 && (
