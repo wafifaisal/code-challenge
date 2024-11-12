@@ -109,9 +109,9 @@ const Home: React.FC = () => {
 
         {/* Card Section */}
         <div
-          className={`${styles.container} w-full flex flex-col items-end justify-start -my-40`}
+          className={`${styles.container} w-full flex flex-col items-center justify-center mt-16 mb-16 sm:mt-24 sm:mb-24`}
         >
-          <h1 className="text-4xl md:text-4xl lg:text-5xl font-bold mb-8 ml-8 flex flex-col">
+          <h1 className="text-4xl md:text-4xl lg:text-5xl font-bold mb-8 flex flex-col text-center">
             Meet our Team
           </h1>
           <div className="flex flex-wrap gap-10 justify-center xl:flex-row lg:flex-row md:flex-col">
@@ -144,6 +144,7 @@ const Home: React.FC = () => {
             ))}
           </div>
         </div>
+
         <Testimonial />
       </div>
     </div>
