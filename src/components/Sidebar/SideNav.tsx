@@ -12,6 +12,7 @@ import { NavItems } from "@/app/styles/config";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import Footer from "../Footer";
 
 export default function SideNav() {
   const navItems = NavItems();
@@ -116,19 +117,21 @@ export default function SideNav() {
             })}
           </div>
         </aside>
-        {/* Sidebar toggle button */}
         <div className="mt-[calc(calc(90vh)-40px)] relative">
           <button
             type="button"
-            className="absolute bottom-32 right-[-12px] flex h-8 w-8 items-center justify-center border rounded-full shadow-md hover:shadow-lg transition-shadow duration-300 ease-in-out z-20 bg-[#AB886D] sm:block hidden"
+            className="absolute bottom-32 right-[-12px] flex h-6 w-6 items-center justify-center border rounded-full shadow-md hover:shadow-lg transition-shadow duration-300 ease-in-out z-20  bg-[#AB886D] "
             onClick={toggleSidebar}
           >
             {isSidebarExpanded ? (
-              <ChevronLeft size={20} className="stroke-foreground text-black" />
+              <ChevronLeft
+                size={20}
+                className="stroke-foreground text-black "
+              />
             ) : (
               <ChevronRight
                 size={20}
-                className="stroke-foreground text-black"
+                className="stroke-foreground text-black "
               />
             )}
           </button>
@@ -140,7 +143,7 @@ export default function SideNav() {
 
 export const SideNavItem: React.FC<{
   label: string;
-  icon: React.ReactNode;
+  icon: React.ReactNode; // Change from 'any' to 'React.ReactNode'
   path: string;
   active: boolean;
   isSidebarExpanded: boolean;
