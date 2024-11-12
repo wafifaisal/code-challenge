@@ -1,6 +1,13 @@
 /** @type {import('next').NextConfig} */
 module.exports = {
     images: {
-      domains: ['randomuser.me'],  // Add this line
+        domains: ['randomuser.me', 'localhost'],
+        remotePatterns: [
+            {
+                protocol: 'https',
+                hostname: 'images.ctfassets.net',
+                pathname: '/**',
+            },
+        ],
     },
-  };
+};

@@ -2,7 +2,13 @@ import Link from "next/link";
 import Image from "next/image";
 import { dataProducts, Product } from "./product"; // Update the import path as needed
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Autoplay } from "swiper/modules"; // Import the necessary modules
+import SwiperCore, { Navigation, Autoplay } from "swiper"; // Import modules from SwiperCore
+
+// Import Swiper styles
+import "swiper/swiper-bundle.css";
+
+// Register the Swiper modules
+SwiperCore.use([Navigation, Autoplay]);
 
 export default function DiscountedProductsSection() {
   // Filter products with a discount (i.e., those with an originalPrice field)
@@ -27,7 +33,7 @@ export default function DiscountedProductsSection() {
   return (
     <div className="">
       <section className="py-16 bg-gradient-to-b from-gray-200 to-gray-200">
-        <div className="max-w-7xl mx-auto px-4">
+        <div className="max-w-7xl  px-4">
           <h2 className="text-4xl font-bold text-center mb-12 text-gray-800 tracking-wide font-serif animate-fade-in">
             ✨ Cozy Up with a Discount ✨
           </h2>
@@ -36,8 +42,10 @@ export default function DiscountedProductsSection() {
             slidesPerView="auto"
             loop={true}
             autoplay={{ delay: 3000 }}
-            navigation={true}
-            modules={[Navigation, Autoplay]}
+            navigation={{
+              nextEl: ".swiper-button-next",
+              prevEl: ".swiper-button-prev",
+            }}
             breakpoints={{
               640: {
                 slidesPerView: 1,
@@ -70,7 +78,6 @@ export default function DiscountedProductsSection() {
                         <Image
                           src={product.image}
                           alt={product.alt}
-                          layout="intrinsic"
                           width={200}
                           height={200}
                           className="object-contain rounded-t-lg transform transition-transform duration-300 group-hover:scale-105"

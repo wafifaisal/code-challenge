@@ -6,6 +6,7 @@ import Bloom from "@/components/bloom";
 import Link from "next/link";
 import ProductsSection from "@/components/ProductSection";
 import Image from "next/image";
+import Testimonial from "@/components/Testimonial";
 
 interface User {
   name: { first: string; last: string };
@@ -100,7 +101,7 @@ const Home: React.FC = () => {
           </div>
         </div>
 
-        <div className="flex-1 w-full">
+        <div className="flex-1 w-full mt-8 lg:mt-0">
           <Bloom isHovered={isHovered} setIsHovered={setIsHovered} />
         </div>
 
@@ -115,7 +116,7 @@ const Home: React.FC = () => {
             {userData.map((user, index) => (
               <div
                 key={index}
-                className={`${styles.card} transition-transform transform hover:scale-105 hover:shadow-lg hover:bg-[#f3f3f3]`}
+                className={`${styles.card} transition-transform transform hover:scale-105 hover:shadow-lg hover:bg-[#f3f3f3] w-full sm:w-[calc(33.333%_-_20px)] md:w-[calc(50%_-_20px)] lg:w-[calc(33.333%_-_20px)]`}
               >
                 <div className={styles["img-box"]}>
                   <Image
@@ -123,6 +124,7 @@ const Home: React.FC = () => {
                     alt={user.name.first}
                     width={120} // Adjust width as needed
                     height={120} // Adjust height as needed
+                    className="rounded-full w-full h-auto"
                   />
                 </div>
                 <div className={styles.content}>
@@ -140,6 +142,7 @@ const Home: React.FC = () => {
             ))}
           </div>
         </div>
+        <Testimonial />
       </div>
     </div>
   );

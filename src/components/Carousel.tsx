@@ -2,10 +2,10 @@
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.css";
-import { Autoplay, Pagination } from "swiper/modules";
 import Image from "next/image";
 import { useMemo } from "react";
 import Link from "next/link";
+import { Autoplay, Pagination } from "swiper";
 
 // Updated slide data with specific links for each item
 const slides = [
@@ -42,7 +42,6 @@ export default function Carousel() {
       autoplay: { delay: 5000 },
       loop: true,
       slidesPerView: 1,
-      speed: 500,
       className: "mySwiper",
     }),
     []

@@ -3,19 +3,14 @@ import { dataProducts } from "@/components/product"; // Adjust import based on y
 import { filterByCategory } from "@/components/filter"; // Adjust import based on your folder structure
 import ProductCard from "@/components/ProductCard"; // Adjust import based on your folder structure
 import SideNav from "@/components/Sidebar/SideNav";
-
 type Params = { category: string };
-
 export default function CategoryPage({ params }: { params: Params }) {
   const { category } = params;
-
   // Filter products based on category
   const filteredProducts = filterByCategory(category, dataProducts);
-
   if (filteredProducts.length === 0) {
     return notFound();
   }
-
   return (
     <div className="flex h-auto w-full">
       <SideNav />
