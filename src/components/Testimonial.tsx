@@ -1,15 +1,8 @@
 /** @format */
 "use client";
 
-import Image, { StaticImageData } from "next/image";
 import clsx from "clsx";
-
-// Image imports
-// import imageDaniel from "./images/image-daniel.jpg";
-// import imageJonathan from "./images/image-jonathan.jpg";
-// import imageJeanette from "./images/image-jeanette.jpg";
-// import imagePatrick from "./images/image-patrick.jpg";
-// import imageKira from "./images/image-kira.jpg";
+import Image from "next/image";
 
 // Colors
 const color_ModerateViolet = "hsl(263, 55%, 52%)";
@@ -24,7 +17,6 @@ interface DataType {
   className?: string;
   bgColor?: string;
   textColor?: string;
-  // avatarImg: StaticImageData;
   name: string;
   heading: string;
   description: string;

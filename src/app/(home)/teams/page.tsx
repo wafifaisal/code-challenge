@@ -2,6 +2,7 @@
 
 import React from "react";
 import axios from "axios";
+import Image from "next/image"; // Import Image from next/image
 
 type TeamMember = {
   name: {
@@ -58,10 +59,13 @@ const TeamsPage = () => {
             >
               <div className="card bg-white shadow-lg rounded-lg">
                 <figure className="overflow-hidden">
-                  <img
+                  {/* Replace img with Image component */}
+                  <Image
                     src={member.picture.large}
                     alt={`${member.name.first} ${member.name.last}`}
                     className="w-full h-64 object-cover transform transition duration-300 group-hover:scale-105"
+                    width={400} // Set the width you want
+                    height={256} // Set the height you want
                   />
                 </figure>
                 <figure className="p-6 flex flex-col items-start justify-between bg-gray-800 text-white opacity-100 transition-all duration-300">
