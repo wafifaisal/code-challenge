@@ -71,10 +71,10 @@ export default function AboutPage() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
       >
-        <h2 className="text-4xl font-semibold text-pink-700 text-3xl sm:text-4xl md:text-5xl">
+        <h2 className="text-4xl font-semibold text-pink-700  sm:text-4xl md:text-5xl">
           Our Vision
         </h2>
-        <p className="mt-4 text-xl text-gray-600 text-base sm:text-lg md:text-xl">
+        <p className="mt-4 text-xl text-gray-600  sm:text-lg md:text-xl">
           Inspiring creativity through hand-crafted beauty and crochet artistry.
         </p>
       </motion.section>
@@ -86,10 +86,10 @@ export default function AboutPage() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
       >
-        <h2 className="text-4xl font-semibold text-pink-700 text-3xl sm:text-4xl md:text-5xl">
+        <h2 className="text-4xl font-semibold text-pink-700  sm:text-4xl md:text-5xl">
           Our Mission
         </h2>
-        <p className="mt-4 text-xl text-gray-600 text-base sm:text-lg md:text-xl">
+        <p className="mt-4 text-xl text-gray-600 sm:text-lg md:text-xl">
           Providing a joyful crochet experience through quality, community, and
           passion.
         </p>
@@ -103,7 +103,7 @@ export default function AboutPage() {
         viewport={{ once: true }}
         transition={{ duration: 1.2 }}
       >
-        <h2 className="text-2xl font-semibold text-pink-700 mb-8 text-xl sm:text-2xl md:text-3xl">
+        <h2 className="text-2xl font-semibold text-pink-700 mb-8  sm:text-2xl md:text-3xl">
           Our Achievements
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
@@ -136,7 +136,7 @@ export default function AboutPage() {
         viewport={{ once: true }}
         transition={{ duration: 1.4 }}
       >
-        <h2 className="text-4xl font-semibold text-pink-700 text-3xl sm:text-4xl md:text-5xl">
+        <h2 className="text-4xl font-semibold text-pink-700  sm:text-4xl md:text-5xl">
           Meet Our Team
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">

@@ -126,7 +126,7 @@ const Home: React.FC = () => {
                     alt={user.name.first}
                     width={120} // Adjust width as needed
                     height={120} // Adjust height as needed
-                    className="rounded-full w-full h-auto"
+                    className=" w-full h-auto"
                   />
                 </div>
                 <div className={styles.content}>
