@@ -12,7 +12,6 @@ import { NavItems } from "@/app/styles/config";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import Footer from "../Footer";
 
 export default function SideNav() {
   const navItems = NavItems();
