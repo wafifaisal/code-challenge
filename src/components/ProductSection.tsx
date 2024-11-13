@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { dataProducts, Product } from "./product"; // Update the import path as needed
 import { Swiper, SwiperSlide } from "swiper/react";
-import SwiperCore, { Navigation, Autoplay } from "swiper"; // Import modules from SwiperCore
+import SwiperCore, { Navigation, Autoplay } from "swiper";
 
 // Import Swiper styles
 import "swiper/swiper-bundle.css";
@@ -10,12 +10,12 @@ import "swiper/swiper-bundle.css";
 SwiperCore.use([Navigation, Autoplay]);
 
 export default function DiscountedProductsSection() {
-  // Filter products with a discount (i.e., those with an originalPrice field)
+  // Filter products with a discount
   const discountedProducts = dataProducts.filter(
     (product: Product) => product.originalPrice
   );
 
-  // Utility function to parse formatted IDR price strings to numbers
+  // Utility to parse formatted IDR price strings to numbers
   const parseIDR = (price: string) =>
     Number(price.replace("Rp", "").replace(",", ""));
 
@@ -31,28 +31,32 @@ export default function DiscountedProductsSection() {
 
   return (
     <div>
-      <section className="py-16 bg-gradient-to-b from-gray-200 to-gray-200">
-        <div className="max-w-7xl px-4">
-          <h2 className="text-4xl font-bold text-center mb-12 text-gray-800 tracking-wide font-serif animate-fade-in">
+      <section className="py-12 bg-gradient-to-b from-gray-200 to-gray-200 overflow-hidden">
+        <div className="max-w-7xl px-4 mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-8 md:mb-12 text-gray-800 font-serif animate-fade-in">
             ✨ Cozy Up with a Discount ✨
           </h2>
           <Swiper
-            spaceBetween={20}
-            slidesPerView="auto"
+            spaceBetween={10}
+            slidesPerView={1}
             loop={true}
-            autoplay={{ delay: 1000 }}
+            autoplay={{ delay: 3000 }}
             navigation={{
               nextEl: ".swiper-button-next",
               prevEl: ".swiper-button-prev",
             }}
             breakpoints={{
-              640: {
+              480: {
                 slidesPerView: 1,
                 spaceBetween: 10,
               },
+              640: {
+                slidesPerView: 1.5,
+                spaceBetween: 15,
+              },
               768: {
                 slidesPerView: 2,
-                spaceBetween: 15,
+                spaceBetween: 20,
               },
               1024: {
                 slidesPerView: 3,
@@ -65,32 +69,33 @@ export default function DiscountedProductsSection() {
               const discountPercentage = getDiscountPercentage(product);
               return (
                 <SwiperSlide key={index}>
-                  <div className="bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out overflow-hidden relative z-10 flex flex-col items-center">
+                  <div className="bg-white rounded-lg shadow-md md:shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out overflow-hidden relative z-10 flex flex-col items-center">
                     {discountPercentage && (
-                      <div className="ribbon absolute top-0 right-0 bg-red-500 text-white p-2 rounded-bl-lg text-xs sm:text-sm">
+                      <div className="ribbon absolute top-0 right-0 bg-red-500 text-white p-1 md:p-2 rounded-bl-lg text-xs sm:text-sm">
                         <span>-{discountPercentage}% OFF</span>
                       </div>
                     )}
 
-                    <div className="relative w-[250px] h-[250px] sm:w-[300px] sm:h-[300px] flex justify-center items-center">
+                    <div className="relative w-full h-64 sm:w-[300px] sm:h-[300px] flex justify-center items-center">
                       <Image
                         src={product.image}
                         alt={product.alt}
-                        width={200}
-                        height={200}
-                        className="object-contain rounded-t-lg transform transition-transform duration-300 group-hover:scale-105"
+                        layout="intrinsic"
+                        width={250}
+                        height={250}
+                        className="object-fill rounded-t-lg transform transition-transform duration-300 group-hover:scale-105"
                       />
                     </div>
                     <div className="p-4 text-center">
-                      <h3 className="text-lg font-semibold text-gray-800 mb-2 group-hover:text-purple-600 transition-colors duration-300">
+                      <h3 className="text-base sm:text-lg md:text-xl font-semibold text-gray-800 mb-1 md:mb-2 group-hover:text-purple-600 transition-colors duration-300">
                         {product.title}
                       </h3>
-                      <p className="text-gray-500 text-sm relative">
+                      <p className="text-gray-500 text-sm md:text-base relative">
                         <span className="line-through">
                           {product.originalPrice}
                         </span>
                       </p>
-                      <p className="text-xl font-bold text-gray-900">
+                      <p className="text-lg md:text-xl font-bold text-gray-900">
                         {product.price}
                       </p>
                     </div>

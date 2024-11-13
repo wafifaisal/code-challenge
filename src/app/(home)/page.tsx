@@ -59,7 +59,7 @@ const Home: React.FC = () => {
   }, []); // Empty dependency array ensures this effect runs only once on mount
 
   return (
-    <div>
+    <div className="overflow-hidden">
       <Carousel />
 
       {/* Button to navigate to /product */}
@@ -88,17 +88,13 @@ const Home: React.FC = () => {
             <span className="text-[rgb(153,107,83)] hover:text-[rgb(125, 85, 61)] transition-all duration-300 ease-in-out transform hover:scale-110">
               FLÉUR
             </span>
-            , we believe that every creation begins with a spark of
-            inspiration.Whether you’re looking to launch a unique business or
-            transform a beloved hobby into something extraordinary, our journey
-            is rooted in passion and creativity. We specialize in handmade
-            crochet products, each piece crafted with love and dedication. Our
-            story is about more than just crochet; it’s about connecting with
-            people through art and craftsmanship. In a world filled with over
-            1.5 billion websites, we strive to stand out by sharing our
-            authentic voice. We want you to feel the warmth and uniqueness in
-            every stitch, reflecting the care and attention that goes into our
-            creations.
+            , we believe that every creation begins with a spark of inspiration.
+            Whether you’re looking to launch a unique business or transform a
+            beloved hobby into something extraordinary, our journey is rooted in
+            passion and creativity. We specialize in handmade crochet products,
+            each piece crafted with love and dedication. Our story is about more
+            than just crochet; it’s about connecting with people through art and
+            craftsmanship.
             <div className="my-4">
               We invite you to join us on this creative adventure. Our handmade
               items are not just products; they’re stories waiting to be shared.
@@ -122,11 +118,11 @@ const Home: React.FC = () => {
           <h1 className="text-4xl md:text-4xl lg:text-5xl font-bold mb-8 flex flex-col text-center">
             Meet our Team
           </h1>
-          <div className="flex flex-wrap gap-10 justify-center xl:flex-row lg:flex-row md:flex-col">
+          <div className="flex flex-wrap gap-4 sm:gap-6 lg:gap-10 justify-center">
             {userData.map((user, index) => (
               <div
                 key={index}
-                className={`${styles.card} transition-transform transform hover:scale-105 hover:shadow-lg hover:bg-[#f3f3f3] w-full sm:w-[calc(33.333%_-_20px)] md:w-[calc(50%_-_20px)] lg:w-[calc(33.333%_-_20px)]`}
+                className={`${styles.card} transition-transform transform hover:scale-105 hover:shadow-lg hover:bg-[#f3f3f3] w-full sm:w-[calc(100%_-_20px)] md:w-[calc(50%_-_20px)] lg:w-[calc(33.333%_-_20px)]`}
               >
                 <div className={styles["img-box"]}>
                   <Image
