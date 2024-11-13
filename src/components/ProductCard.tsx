@@ -1,56 +1,91 @@
-import Link from "next/link";
 import Image from "next/image";
-import { Product } from "./product";
+import Link from "next/link";
 
-export default function ProductCard({ product }: { product: Product }) {
-  // Utility function to parse formatted IDR price strings to numbers
-  const parseIDR = (price: string) =>
-    Number(price.replace("Rp", "").replace(",", ""));
+interface IProductCard {
+  title: string;
+  thumbnail: string;
+  price: string;
+  originalPrice?: string;
+  slug: string;
+  category: string;
+}
 
-  // Calculate discount percentage
-  const originalPrice = product.originalPrice
-    ? parseIDR(product.originalPrice)
+export default function ProductCard({
+  title,
+  thumbnail,
+  price,
+  originalPrice,
+  slug,
+  category,
+}: IProductCard) {
+  const parseIDR = (price: string | undefined) => {
+    if (!price) return 0; // Handle undefined or null
+    return Number(price.replace("Rp", "").replace(",", ""));
+  };
+
+  // Calculate discount percentage if original price is available
+  const originalPriceValue = originalPrice ? parseIDR(originalPrice) : null;
+  const priceValue = parseIDR(price);
+  const discountPercentage = originalPriceValue
+    ? Math.round(((originalPriceValue - priceValue) / originalPriceValue) * 100)
     : null;
-  const price = parseIDR(product.price);
-  const discountPercentage = originalPrice
-    ? Math.round(((originalPrice - price) / originalPrice) * 100)
-    : null;
+
+  const imageUrl = thumbnail.startsWith("http")
+    ? thumbnail
+    : `https:${thumbnail}`;
 
   return (
-    <div className="product-card rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out overflow-hidden relative">
+    <div className="border border-gray-200 rounded-lg hover:shadow-xl transition-shadow duration-300 ease-in-out overflow-hidden w-full relative group">
       {/* Ribbon for discount percentage */}
-      {product.originalPrice && discountPercentage && (
+      {originalPrice && discountPercentage && (
         <div className="ribbon">
           <span>-{discountPercentage}% OFF</span>
         </div>
       )}
-      <Link href={product.href} className="block group" target="_blank">
-        <div className="relative w-full h-[280px] sm:w-[300px] sm:h-[320px]">
-          <Image
-            src={product.image}
-            alt={product.alt}
-            fill
-            loading="lazy"
-            className="object-contain rounded-t-lg transform transition-transform duration-300 group-hover:scale-105"
-          />
-        </div>
-        <div className="p-4">
-          <h3 className="text-lg sm:text-xl font-semibold text-gray-800 mb-2 group-hover:text-purple-600 transition-colors duration-300">
-            {product.title}
-          </h3>
-          {product.originalPrice && (
-            <p className="text-gray-500 text-sm sm:text-base relative">
-              <span className="group-hover:line-through group-hover:text-gray-400 transition-all duration-300 ease-in-out">
-                {product.originalPrice}
-              </span>
-              <span className="absolute top-1/2 left-0 w-full h-[1px] bg-gray-400 transform scale-x-0 group-hover:scale-x-10 transition-transform duration-300 ease-in-out origin-left" />
-            </p>
+
+      {/* Thumbnail Image */}
+      <div className="rounded-t-lg h-[200px] w-full relative overflow-hidden">
+        <Image
+          className="object-contain rounded-t-lg hover:scale-110 transition-transform duration-300"
+          src={imageUrl}
+          alt={title}
+          fill
+          loading="lazy"
+        />
+      </div>
+
+      {/* Product Information */}
+      <div className="p-4">
+        <h5 className="mb-2 text-md font-bold line-clamp-2 tracking-tight text-gray-900">
+          {title}
+        </h5>
+        <span className="text-xs bg-gray-600 text-white px-2 py-1 rounded-sm mb-2 inline-block">
+          {category}
+        </span>
+
+        {/* Price and Discount */}
+        <div className="my-4">
+          {originalPrice && discountPercentage && (
+            <div className="flex items-center"></div>
           )}
-          <p className="text-xl sm:text-2xl font-bold text-gray-900">
-            {product.price}
-          </p>
+          <div className="flex items-center space-x-2">
+            {originalPrice && (
+              <p className="text-sm line-through text-gray-500">
+                {originalPrice}
+              </p>
+            )}
+            <p className="text-lg font-bold text-gray-900">{price}</p>
+          </div>
         </div>
-      </Link>
+
+        {/* Product Link */}
+        <Link
+          href={`/products/${slug}`}
+          className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-teal-700 rounded-lg hover:bg-teal-800 focus:ring-4 focus:outline-none focus:ring-teal-300"
+        >
+          View Product
+        </Link>
+      </div>
     </div>
   );
 }

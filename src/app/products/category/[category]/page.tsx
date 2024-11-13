@@ -1,19 +1,23 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import ProductCard from "@/components/ProductCard";
 import SideNav from "@/components/Sidebar/SideNav";
-import { getProduct } from "@/lib/blog";
+import { getProductByCategory } from "@/lib/blog";
 import { IProduct } from "@/types/blog";
-import { useEffect, useState } from "react";
 
-export default function ProductsPage() {
+export default function ProductCategoryPage({
+  category,
+}: {
+  category: string;
+}) {
   const [products, setProducts] = useState<IProduct[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function fetchData() {
       try {
-        const data = await getProduct();
+        const data = await getProductByCategory(category); // Fetch products by category
         setProducts(data);
       } catch (error) {
         console.error("Error fetching products:", error);
@@ -23,15 +27,17 @@ export default function ProductsPage() {
     }
 
     fetchData();
-  }, []);
+  }, [category]);
 
   if (loading) return <div>Loading products...</div>;
   if (products.length === 0) return <div>No products found.</div>;
 
   return (
     <div className="flex h-auto w-full">
-      <SideNav />
+      <SideNav /> {/* Sidebar */}
       <div className="flex-1 p-6">
+        <h1 className="text-2xl mb-6">{category} Products</h1>{" "}
+        {/* Category Title */}
         <div className="grid grid-cols-1 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-2">
           {products.map((item, idx) => (
             <div key={idx} data-cy="product-item">

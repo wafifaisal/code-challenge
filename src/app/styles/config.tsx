@@ -64,7 +64,7 @@ export const NavItems = () => {
       name: "Bags",
       href: "/products/bags",
       icon: <EyeClosed size={20} />,
-      active: isNavItemActive(pathname, "/products/bags"),
+      active: isNavItemActive(pathname, "/products/categoy/bags"),
       position: "top",
     },
     {
