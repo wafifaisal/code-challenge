@@ -81,6 +81,7 @@ export default function ProductCard({
         {/* Product Link */}
         <Link
           href={`/products/${slug}`}
+          target="_blank"
           className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-teal-700 rounded-lg hover:bg-teal-800 focus:ring-4 focus:outline-none focus:ring-teal-300"
         >
           View Product

@@ -31,7 +31,6 @@ export default async function ProductPage({
         <div className="absolute top-0 left-0 mt-6 ml-4 z-10">
           <Link
             href={`/products//category/${category}`}
-            target="_blank"
             className="flex items-center space-x-2 text-neutral-600 hover:text-emerald-700 text-lg font-semibold transition duration-300"
           >
             <ChevronLeft
