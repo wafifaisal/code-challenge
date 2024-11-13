@@ -1,4 +1,3 @@
-import Link from "next/link";
 import Image from "next/image";
 import { dataProducts, Product } from "./product"; // Update the import path as needed
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -41,7 +40,7 @@ export default function DiscountedProductsSection() {
             spaceBetween={20}
             slidesPerView="auto"
             loop={true}
-            autoplay={{ delay: 3000 }}
+            autoplay={{ delay: 1000 }}
             navigation={{
               nextEl: ".swiper-button-next",
               prevEl: ".swiper-button-prev",
