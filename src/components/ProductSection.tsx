@@ -72,34 +72,29 @@ export default function DiscountedProductsSection() {
                         <span>-{discountPercentage}% OFF</span>
                       </div>
                     )}
-                    <Link
-                      href={product.href}
-                      className="block group text-center"
-                      target="_blank"
-                    >
-                      <div className="relative w-[250px] h-[250px] sm:w-[300px] sm:h-[300px] flex justify-center items-center">
-                        <Image
-                          src={product.image}
-                          alt={product.alt}
-                          width={200}
-                          height={200}
-                          className="object-contain rounded-t-lg transform transition-transform duration-300 group-hover:scale-105"
-                        />
-                      </div>
-                      <div className="p-4 text-center">
-                        <h3 className="text-lg font-semibold text-gray-800 mb-2 group-hover:text-purple-600 transition-colors duration-300">
-                          {product.title}
-                        </h3>
-                        <p className="text-gray-500 text-sm relative">
-                          <span className="line-through">
-                            {product.originalPrice}
-                          </span>
-                        </p>
-                        <p className="text-xl font-bold text-gray-900">
-                          {product.price}
-                        </p>
-                      </div>
-                    </Link>
+
+                    <div className="relative w-[250px] h-[250px] sm:w-[300px] sm:h-[300px] flex justify-center items-center">
+                      <Image
+                        src={product.image}
+                        alt={product.alt}
+                        width={200}
+                        height={200}
+                        className="object-contain rounded-t-lg transform transition-transform duration-300 group-hover:scale-105"
+                      />
+                    </div>
+                    <div className="p-4 text-center">
+                      <h3 className="text-lg font-semibold text-gray-800 mb-2 group-hover:text-purple-600 transition-colors duration-300">
+                        {product.title}
+                      </h3>
+                      <p className="text-gray-500 text-sm relative">
+                        <span className="line-through">
+                          {product.originalPrice}
+                        </span>
+                      </p>
+                      <p className="text-xl font-bold text-gray-900">
+                        {product.price}
+                      </p>
+                    </div>
                   </div>
                 </SwiperSlide>
               );

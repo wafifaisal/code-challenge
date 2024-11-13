@@ -113,3 +113,13 @@ body {
     transform: translateX(-250%);
   }
 }
+
+/* Pastikan produk selalu mengisi lebar yang tersedia */
+.product-container {
+  width: 100%; /* Menjamin produk menggunakan seluruh lebar kontainer */
+}
+
+/* Atur margin/padding jika diperlukan untuk memperbaiki perubahan ukuran */
+.dropdown-open {
+  margin-bottom: 10px; /* Misalnya menambah jarak antar elemen saat dropdown terbuka */
+}

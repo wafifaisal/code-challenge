@@ -61,7 +61,16 @@ const Home: React.FC = () => {
   return (
     <div>
       <Carousel />
-      <ProductsSection />
+
+      {/* Button to navigate to /product */}
+      <div className="flex justify-center flex-col items-center bg-gray-200">
+        <ProductsSection />
+        <Link href="/products">
+          <button className="px-10 py-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white text-lg font-bold rounded-lg shadow-xl transform transition-all hover:scale-105 hover:shadow-2xl focus:outline-none duration-300 ease-in-out">
+            See More Products
+          </button>
+        </Link>
+      </div>
       <div
         className={`${styles.container} flex flex-col lg:flex-row p-4 bg-gray-200`}
       >
@@ -99,7 +108,6 @@ const Home: React.FC = () => {
               through our creations, and together, let’s make something
               beautiful.
             </div>
-            {/* Rest of the content */}
           </div>
         </div>
 

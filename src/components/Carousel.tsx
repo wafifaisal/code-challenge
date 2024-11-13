@@ -13,23 +13,27 @@ const slides = [
     {
       src: "/bunga.png",
       label: "Flower Bundle",
-      link: "/products/bundle",
+      link: "/products/category/bundle",
     },
     {
       src: "/costumize.png",
       label: "Make Your Own Bundle",
       link: "/products/customize",
     },
-    { src: "/satuan.png", label: "Flowers", link: "/products/flowers" },
+    {
+      src: "/satuan.png",
+      label: "Flowers",
+      link: "/products/category/flowers",
+    },
   ],
   [
-    { src: "/charm.png", label: "Charms", link: "/products/charms" },
+    { src: "/charm.png", label: "Charms", link: "/products/category/charms" },
     {
       src: "/animal.png",
       label: "Stuffed Animal",
       link: "/products/stuffedanimal",
     },
-    { src: "/bag.png", label: "Bags", link: "/products/bags" },
+    { src: "/bag.png", label: "Bags", link: "/products/category/bags" },
   ],
 ];
 
