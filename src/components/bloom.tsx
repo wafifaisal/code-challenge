@@ -16,35 +16,55 @@ const Bloom: React.FC<BloomProps> = ({ isHovered, setIsHovered }) => {
           onMouseLeave={() => setIsHovered(false)} // Update the parent hover state
         ></div>
 
-        <Link href="/about" className={styles.portfolioLink}>
+        <Link
+          href="/about"
+          className={styles.portfolioLink}
+          aria-label="Go to Portfolio Section"
+        >
           <div
             className={`${styles.petal} ${styles.portfolio} ${
               isHovered ? styles.hovered : ""
             }`}
           ></div>
         </Link>
-        <Link href="/about" className={styles.contactLink}>
+        <Link
+          href="/about"
+          className={styles.contactLink}
+          aria-label="Go to Portfolio Section"
+        >
           <div
             className={`${styles.petal} ${styles.contact} ${
               isHovered ? styles.hovered : ""
             }`}
           ></div>
         </Link>
-        <Link href="/about" className={styles.socialmediaLink}>
+        <Link
+          href="/about"
+          className={styles.socialmediaLink}
+          aria-label="Go to Portfolio Section"
+        >
           <div
             className={`${styles.petal} ${styles.socialmedia} ${
               isHovered ? styles.hovered : ""
             }`}
           ></div>
         </Link>
-        <Link href="/about" className={styles.inspirationLink}>
+        <Link
+          href="/about"
+          className={styles.inspirationLink}
+          aria-label="Go to Portfolio Section"
+        >
           <div
             className={`${styles.petal} ${styles.inspiration} ${
               isHovered ? styles.hovered : ""
             }`}
           ></div>
         </Link>
-        <Link href="/about" className={styles.mysteryLink}>
+        <Link
+          href="/about"
+          className={styles.mysteryLink}
+          aria-label="Go to Portfolio Section"
+        >
           <div
             className={`${styles.petal} ${styles.mystery} ${
               isHovered ? styles.hovered : ""
@@ -54,6 +74,7 @@ const Bloom: React.FC<BloomProps> = ({ isHovered, setIsHovered }) => {
             href="/about"
             target="_blank"
             className="relative z-30 flex justify-center"
+            aria-label="Go to Portfolio Section"
           >
             <div className={`${styles["tooltip-content"]} my-[75px] `}>
               Explore the Blooms

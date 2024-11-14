@@ -76,7 +76,7 @@ export default async function ProductPage({
           </div>
 
           {/* Tombol Add to Cart (WhatsApp) */}
-          <a
+          <Link
             href={`https://wa.me/+6287821698570?text=${encodeURIComponent(
               whatsappMessage
             )}`}
@@ -85,7 +85,7 @@ export default async function ProductPage({
             className="block w-full py-4 text-center text-white bg-emerald-600 hover:bg-emerald-700 rounded-full shadow-md transition-transform duration-200 hover:scale-105"
           >
             Add to Cart (WhatsApp)
-          </a>
+          </Link>
         </div>
       </div>
     </div>

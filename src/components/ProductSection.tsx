@@ -31,11 +31,15 @@ export default function DiscountedProductsSection() {
 
   return (
     <div>
-      <section className="py-12 bg-gradient-to-b from-gray-200 to-gray-200 overflow-hidden">
-        <div className="max-w-7xl px-4 mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-8 md:mb-12 text-gray-800 font-serif animate-fade-in">
+      <section className="py-12 bg-gradient-to-b from-gray-200 to-gray-200 overflow-hidden flex flex-wrap justify-center">
+        <h1 className="text-3xl md:text-4xl font-bold text-center mb-8 md:mb-12 text-gray-800 font-serif animate-fade-in">
+          <span className="block sm:hidden">✨ Cozy Up</span>
+          <span className="block sm:hidden">for a Discount ✨</span>
+          <span className="hidden sm:inline">
             ✨ Cozy Up with a Discount ✨
-          </h2>
+          </span>
+        </h1>
+        <div className="max-w-7xl px-4 mx-auto flex flex-wrap justify-center">
           <Swiper
             spaceBetween={10}
             slidesPerView={1}

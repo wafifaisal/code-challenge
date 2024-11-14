@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 
 // Arrow icon component with customizable size and color
 const ArrowRight = ({
-  size = 4,
+  size = 20,
   color = "currentColor",
 }: {
   size?: number;
@@ -71,7 +71,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       size,
       asChild = false,
       rightArrow = false,
-      arrowSize = 4,
+      arrowSize = 20,
       arrowColor = "currentColor",
       ...props
     },

@@ -133,6 +133,7 @@ const Header = () => {
         <button
           className="text-gray-500 focus:outline-none"
           onClick={() => setIsOpen(!isOpen)}
+          aria-label={isOpen ? "Close menu" : "Open menu"} // Dynamic label based on state
         >
           <svg
             className="w-6 h-6"

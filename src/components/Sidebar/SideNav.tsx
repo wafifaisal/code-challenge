@@ -119,17 +119,17 @@ export default function SideNav() {
         <div className="mt-[calc(calc(90vh)-40px)] relative">
           <button
             type="button"
-            className="absolute bottom-32 right-[-12px] flex h-6 w-6 items-center justify-center border rounded-full shadow-md hover:shadow-lg transition-shadow duration-300 ease-in-out z-20  bg-[#AB886D] "
+            className="absolute bottom-32 right-[-12px] flex h-6 w-6 items-center justify-center border rounded-full shadow-md hover:shadow-lg transition-shadow duration-300 ease-in-out z-auto  bg-[#AB886D] "
             onClick={toggleSidebar}
           >
             {isSidebarExpanded ? (
               <ChevronLeft
-                size={20}
+                size={40}
                 className="stroke-foreground text-black "
               />
             ) : (
               <ChevronRight
-                size={20}
+                size={40}
                 className="stroke-foreground text-black "
               />
             )}
