@@ -39,7 +39,7 @@ export default function DiscountedProductsSection() {
             ✨ Cozy Up with a Discount ✨
           </span>
         </h1>
-        <div className="max-w-7xl px-4 mx-auto flex flex-wrap justify-center">
+        <div className="max-w-7xl px-4 mx-auto flex  justify-center">
           <Swiper
             spaceBetween={10}
             slidesPerView={1}
